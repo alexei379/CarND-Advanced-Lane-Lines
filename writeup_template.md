@@ -13,7 +13,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[original_chessboard]: ./camera_cal/calibration1.jpg "Original chessboard"
+[undistorted_chessboard]: ./output_images/calibration1.jpg "Undistorted chessboard"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
@@ -44,7 +45,9 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![alt text][image1]
+| Original Chessboard | Undistorted Chessboard |
+|:-------------------:|:---------------------:| 
+| ![original_chessboard] | ![undistorted_chessboard] |
 
 ### Pipeline (single images)
 
