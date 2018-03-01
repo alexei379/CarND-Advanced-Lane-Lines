@@ -33,6 +33,9 @@ def process_images():
 
     debug = True
 
+    img = load_image('camera_cal/calibration1.jpg')
+    save_image(it.undistort(img), 'output_images/calibration1.jpg')
+
     for file_name in glob.glob('test_images/*.jpg'):
         print(file_name)
         img = load_image(file_name)
@@ -112,4 +115,4 @@ def process_video():
         out_clip.write_videofile('test_videos_output/' + input_path, audio=False)
 
 
-process_video()
+process_images()
