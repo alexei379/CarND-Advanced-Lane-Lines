@@ -67,7 +67,7 @@ class Thresholder():
         s_binary[(s_channel >= s_thresh[0]) & (s_channel <= s_thresh[1])] = 1
 
         hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
-        v_channel = hls[:, :, 2]
+        v_channel = hsv[:, :, 2]
         v_binary = np.zeros_like(v_channel)
         v_binary[(v_channel >= v_thresh[0]) & (v_channel <= v_thresh[1])] = 1
 

@@ -10,8 +10,8 @@ class Config:
 
     warp_src = np.float32(
         [[(img_shape[1] / 2) - 470, img_shape[0] - 60],
-         [(img_shape[1] / 2) - 88, img_shape[0] - 255],
-         [(img_shape[1] / 2) + 88, img_shape[0] - 255],
+         [(img_shape[1] / 2) - 72, img_shape[0] - 265],
+         [(img_shape[1] / 2) + 72, img_shape[0] - 265],
          [(img_shape[1] / 2) + 470, img_shape[0] - 60]])
 
     warp_dst = np.float32(

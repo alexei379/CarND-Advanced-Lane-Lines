@@ -2,10 +2,10 @@ import numpy as np
 import itertools
 
 class Line:
-    avg_over_last_n = 7
+    avg_over_last_n = 3
     avg_over_last_n_weights = list(range(1, avg_over_last_n + 1))
     max_base_x_shift = 100
-    min_curve_radius_m = 400
+    min_curve_radius_m = 500
 
     def __init__(self):
         #average x values of the fitted line over the last n iterations
@@ -34,7 +34,7 @@ class Line:
     def add_and_get_radius(self, possible_radius_m):
         if self.radius_of_curvature.size >= self.avg_over_last_n:
             if possible_radius_m < self.min_curve_radius_m:
-                possible_radius = self.radius_of_curvature_avg
+                possible_radius_m = self.radius_of_curvature_avg
             self.radius_of_curvature = np.append(self.radius_of_curvature[-self.avg_over_last_n + 1:], possible_radius_m)
             self.radius_of_curvature_avg = np.average(self.radius_of_curvature, None, self.avg_over_last_n_weights)
         else:

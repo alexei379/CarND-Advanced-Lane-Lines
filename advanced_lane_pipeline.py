@@ -50,7 +50,14 @@ def process_images():
 
         warped_bitmap_img = it.warp(bitmap)
         if debug:
-            save_image(warped_bitmap_img, 'output_images/' + file_name + '_2.jpg')
+            undist_copy = undist.copy()
+            undist_warped = it.warp(undist_copy)
+            cv2.polylines(undist_copy, np.int32([config.warp_src]), True, (255, 0, 0), 5)
+            cv2.polylines(undist_warped, np.int32([config.warp_dst]), True, (0, 255, 0), 5)
+
+            save_image(undist_copy, 'output_images/' + file_name + '_2_1.jpg')
+            save_image(undist_warped, 'output_images/' + file_name + '_2_2.jpg')
+            save_image(warped_bitmap_img, 'output_images/' + file_name + '_2_3.jpg')
 
         if debug:
             out_sliding = SlidingLaneFinder.find(warped_bitmap_img, left_line, right_line, debug)
@@ -97,7 +104,7 @@ def process_video():
         rv.stamp_offset(result, left_line, right_line)
         return result
 
-    for input_path in glob.glob('project_video-*.mp4'):
+    for input_path in glob.glob('project_video.mp4'):
         left_line = Line()
         right_line = Line()
         in_clip = VideoFileClip(input_path)
@@ -105,4 +112,4 @@ def process_video():
         out_clip.write_videofile('test_videos_output/' + input_path, audio=False)
 
 
-process_images()
+process_video()
