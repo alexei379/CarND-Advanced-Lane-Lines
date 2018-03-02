@@ -21,7 +21,6 @@ class Thresholder():
         binary_output = np.zeros_like(scaled_sobel)
         binary_output[(scaled_sobel >= thresh[0]) & (scaled_sobel <= thresh[1])] = 1
         # 6) Return this mask as your binary_output image
-        # binary_output = np.copy(img) # Remove this line
         return binary_output
 
 
