@@ -9,12 +9,6 @@ class Line:
     min_curve_radius_m = 500
 
     def __init__(self):
-        #average x values of the fitted line over the last n iterations
-        self.bestx = None
-
-        #polynomial coefficients averaged over the last n iterations
-        self.best_fit = None
-
         #x values for detected line pixels
         self.allx = None
         #y values for detected line pixels
