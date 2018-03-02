@@ -117,7 +117,11 @@ I implemented it in `Line.py` and `SlidingLaneFinder.py` files. In the pipeline 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in `ResultVisualizer.py` file. I found the highway from the video on [Google maps](https://www.google.com/maps/@37.4451569,-122.2627474,1504m/data=!3m1!1e3), converted the length of lane marks and width of lanes in  on satellite images from pixels to meters based on the scale ruler, and used the resulting measurements in meters to get convertion coeffitients for the warped images.
+
+Method `stamp_radius` converts detected points using the above ceffitients, fits a new polynomial and calculates radius at lines 28/29. The radius is averaged over last 5 frames and between left and right lanes.
+
+Method `stamp_offset` calculates offset by finding a difference between center of the image and midpoint between the lane marks, converting them to meters.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
