@@ -19,6 +19,8 @@ While implementing this project I was using course materials, Q&A session video 
 [undistorted_chessboard]: ./output_images/calibration1.jpg "Undistorted chessboard"
 [original]: ./test_images/test6.jpg "Original road"
 [undistorted_road]: ./output_images/test6.jpg_0.jpg "Undistorted road"
+[binary]: ./output_images/test6.jpg_1.jpg "Undistorted road"
+
 
 [straight_unwarped]: ./output_images/straight_lines1.jpg_2_1.jpg "Straight lines unwarped"
 [straight_warped]: ./output_images/straight_lines1.jpg_2_2.jpg "Straight lines warped"
