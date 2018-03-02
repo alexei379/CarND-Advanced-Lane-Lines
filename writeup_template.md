@@ -23,8 +23,9 @@ The goals / steps of this project are the following:
 
 [fit_visual]: ./output_images/test6.jpg_3.jpg "Fit Visual"
 
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[plotted_warped]: ./output_images/test6.jpg_4.jpg "Plotted lane warped"
+[plotted_unwarped]: ./output_images/test6.jpg_5.jpg "Plotted lane unwarped"
+[result]: ./output_images/test6.jpg_7.jpg "Result"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -125,9 +126,15 @@ Method `stamp_offset` calculates offset by finding a difference between center o
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+Plotting the result back to the original image is done in several steps: `draw_lane` in `ResultVisualizer.py` plots plygon bounded by the fittet lane marking points to warped space, method `unwarp` in `ImageTransformer.py` un-warps the lane back to original image space and `process_images` in `advanced_lane_pipeline.py` adds them together. As the final pass `stamp_radius` and `stamp_offset` are invoked to add curvature radius and vehicle offset.
 
-![alt text][image6]
+Here are the steps applied to the test image:
+
+| Warped        | Un-warped   | 
+|:-------------:|:-------------:| 
+| ![plotted_warped] | ![plotted_unwarped] |
+
+![result]
 
 ---
 
@@ -135,7 +142,9 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+The piplene for video is implemented in `advanced_lane_pipeline.py` `process_video` function. It resembles the test image pipline.
+Here's a [link to my video result (YouTube)](https://www.youtube.com/watch?v=drMYbWS46yw)
+
 
 ---
 
@@ -143,4 +152,4 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+The thresholds I found for using sobel x/y operator combined with color thresholding work nicely on the project video. Hoewer additional technics like threshholding magnitude and direction of the gradient might be useful for more complex scenarios. Also I am using sliding window in every frame, but that can be optimized using the infromation found from the previous frames. I average the results over the last several frames, which on one hand results in smoother output and keeps outliers from drastically affecting the picture, but might not work as well for situations with sudden movement like changing lanes.
