@@ -11,6 +11,8 @@ The goals/steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
+While implementing this project I was using course materials, Q&A session video and discussion forums provided by Udacity.
+
 [//]: # (Image References)
 
 [original_chessboard]: ./camera_cal/calibration1.jpg "Original chessboard"
