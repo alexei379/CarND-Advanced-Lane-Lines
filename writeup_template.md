@@ -18,8 +18,7 @@ The goals / steps of this project are the following:
 [original]: ./test_images/test6.jpg "Original road"
 [undistorted_road]: ./output_images/test6.jpg_0.jpg "Undistorted road"
 
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
+[binary]: ./output_images/test6.jpg_1.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
@@ -66,9 +65,9 @@ I implemented it in `ImageTransformer.py` file in `undistort` method, which is a
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color, sobel x and y operator thresholds to generate a binary image. Implementation is in `Thresholder.py` file, method `pipeline` contains calls to the appropriate functions with threshhold parameters and combines the output into a resulting image.
 
-![alt text][image3]
+![binary]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
