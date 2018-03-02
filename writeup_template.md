@@ -105,7 +105,8 @@ This resulted in the following source and destination points:
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image (I used a different test image with straight lane markings to demonstrate this effect).
 
 | Source        | Warped   | 
-| [straight_unwarped] | [straight_warped] | 
+|:-------------:|:-------------:| 
+| ![straight_unwarped] | ![straight_warped] | 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
