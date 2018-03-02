@@ -110,10 +110,10 @@ I verified that my perspective transform was working as expected by drawing the 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 I implemented it in `Line.py` and `SlidingLaneFinder.py` files. In the pipeline I create objects of `Line` class foe left and right line and keep track of the last 5 measurements, including lane starting points, fitted x and y pixels and radius. The pipline takes thresholded warped image and sends it as input to `SlidingLaneFinder.find` method.
-`SlidingLaneFinder.find` find finds peaks in histogram to the left and right of the image center and uses it as the starting point of possible lane markings (averaged over last 5 frames). After this I find 20 "windows" for each lane moving from the starting point towards the possible next location. Window width = 100px, minimum number of pixels to be consdered as part of the line - 30 px. While moving the window, I keep track of non-zero pixels. After this detected points are added to the line object and based on last 5 frames I fit second level polynomial through the points. If the resulting quadratic coefficient of left and right lane markings are within 0.0003 of each other, I consider the detected lane as good one and keep found points, otherwise - discard.
+`SlidingLaneFinder.find` find finds peaks in histogram to the left and right of the image center and uses it as the starting point of possible lane markings (averaged over last 5 frames). After this I find 20 "windows" for each lane moving from the starting point towards the possible next location (window width = 100px, minimum number of pixels to be consdered as part of the line - 30 px). While moving the window, I keep track of non-zero pixels. After this detected points are added to the line object and based on last 5 frames I fit second level polynomial through the points using numpy's `polyfit` function. If the resulting quadratic coefficient of left and right lane markings are within 0.0003 of each other, I consider the detected lane as good one and keep found points, otherwise - discard.
 
 `find` method accepts `debug` parameter, that allows to render the results of lane markings detection. The output of it:
-!fit_visual
+![fit_visual]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
