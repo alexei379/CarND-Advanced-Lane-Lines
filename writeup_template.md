@@ -15,6 +15,9 @@ The goals / steps of this project are the following:
 
 [original_chessboard]: ./camera_cal/calibration1.jpg "Original chessboard"
 [undistorted_chessboard]: ./output_images/calibration1.jpg "Undistorted chessboard"
+[original]: ./test_images/test6.jpg "Original road"
+[undistorted_road]: ./output_images/test6.jpg_0.jpg "Undistorted road"
+
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
@@ -41,7 +44,7 @@ The code for this step is contained in IPython notebook located in "./camera_cal
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function. I save the resulting camera matrix `mtx` and distortion coefficients `dist` into `calibration_pickle.p` file.
+I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function. I applied the resulting camera matrix `mtx` and distortion coefficients `dist` into `calibration_pickle.p` file.
 
 I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
@@ -51,10 +54,15 @@ I applied this distortion correction to the test image using the `cv2.undistort(
 
 ### Pipeline (single images)
 
+To test the pipline I implemented `process_images` function in the `advanced_lane_pipeline.py` file. It reads test images from `test_images` directory and saves resulting images from each step.
+
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+I implemented it in `ImageTransformer.py` file in `undistort` method, which is a wrapper around `cv2.undistort`. The pipline loads camera matrix `mtx` and distortion coefficients `dist` from `calibration_pickle.p` file, instantiates ImageTransformer and calls undistort to perform distortion correction. 
+
+| Original Road | Undistorted Road |
+|:-------------------:|:---------------------:| 
+| ![original] | ![undistorted_road] |
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
